@@ -1,3 +1,32 @@
 schemaVersion: 2.1.0
 metadata:
   name: pycharm-demo-project
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      memoryLimit: 3Gi
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
+          targetPort: 8080
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - exec:
+      commandLine: pip3 freeze
+      component: tools
+      group:
+        kind: debug
+      label: List installed python packages
+      workingDir: '${PROJECT_SOURCE}'
+    id: list-installed-python-packages
