@@ -7,7 +7,10 @@ components:
       image: quay.io/devfile/universal-developer-image:ubi8-0e189d9 
       # if use -latest -> devworkspace failed to progress past phase 'Starting' for longer than timeout (5m)
       # see https://github.com/eclipse/che/issues/21380
+      cpuLimit: 500m
+      cpuRequest: 30m
       memoryLimit: 3Gi
+      memoryRequest: 256Mi
       endpoints:
         - exposure: none
           name: debug
