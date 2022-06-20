@@ -1,1 +1,52 @@
-id: che-incubator/che-pycharm/latest
+inline:
+      containers:
+        - name: che-pycharm-runtime-description
+          image: 'quay.io/devfile/universal-developer-image:ubi8-9436df2'
+          command:
+            - /projector/entrypoint-volume.sh
+          env:
+            - name: PROJECTOR_ASSEMBLY_DIR
+              value: /projector
+            - name: PROJECTOR_CONFIG_DIR
+              value: /home/user/.jetbrains
+          volumeMounts:
+            - name: projector-volume
+              path: /projector
+            - name: projector-configuration
+              path: /home/user/.jetbrains
+            - name: projector-java-configuration
+              path: /home/user/.java
+          memoryLimit: 3Gi
+          memoryRequest: 2048Mi
+          cpuLimit: 2000m
+          cpuRequest: 1500m
+          endpoints:
+            - name: intellij
+              attributes:
+                type: main
+                cookiesAuthEnabled: true
+                discoverable: false
+                urlRewriteSupported: true
+              targetPort: 8887
+              exposure: public
+              path: '/?backgroundColor=434343&wss'
+              secure: false
+              protocol: http
+
+
+    initContainers:
+        - name: che-pycharm-injector
+          image: 'quay.io/che-incubator/che-pycharm:latest'
+          command: [ "/projector/entrypoint-init-container.sh" ]
+          env:
+            - name: PROJECTOR_VOLUME_MOUNT
+              value: /projector-volume
+            - name: PROJECTOR_ASSEMBLY_DIR
+              value: /projector
+          volumeMounts:
+            - name: projector-volume
+              path: /projector-volume
+          memoryLimit: 128Mi
+          memoryRequest: 32Mi
+          cpuLimit: 500m
+          cpuRequest: 30m
