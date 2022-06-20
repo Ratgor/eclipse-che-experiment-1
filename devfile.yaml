@@ -21,12 +21,12 @@ components:
           name: 8080-tcp
           protocol: http
           targetPort: 8080
-      volumeMounts:
-        - name: m2
-          path: /home/user/.m2
-  - name: m2
-    volume:
-      size: 1G
+      #volumeMounts:
+      #  - name: m2
+      #    path: /home/user/.m2
+  #- name: m2
+  #  volume:
+  #    size: 1G
 commands:
   - exec:
       commandLine: pip3 freeze
