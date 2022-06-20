@@ -1,39 +1,39 @@
 schemaVersion: 2.1.0
 metadata:
   name: pycharm-demo-project
-#components:
-#  - name: tools
-#    container:
-#      image: quay.io/devfile/universal-developer-image:ubi8-latest 
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest 
       # image: quay.io/devfile/universal-developer-image:ubi8-0e189d9 
       # if use -latest -> devworkspace failed to progress past phase 'Starting' for longer than timeout (5m)
       # see https://github.com/eclipse/che/issues/21380
-#      memoryLimit: 3Gi
+      memoryLimit: 3Gi
       # experimental, non default:
       # memoryRequest: 256Mi
       # cpuLimit: 500m
       # cpuRequest: 30m
-#      endpoints:
-#        - exposure: none
-#          name: debug
-#          protocol: tcp
-#          targetPort: 5005
-#        - exposure: public
-#          name: 8080-tcp
-#          protocol: http
-#          targetPort: 8080
-      #volumeMounts:
-      #  - name: m2
-      #    path: /home/user/.m2
-  #- name: m2
-  #  volume:
-  #    size: 1G
-#commands:
-#  - exec:
-#      commandLine: pip3 freeze
-#      component: tools
-#      group:
-#        kind: debug
-#      label: List installed python packages
-#      workingDir: '${PROJECT_SOURCE}'
-#    id: list-installed-python-packages
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
+          targetPort: 8080
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - exec:
+      commandLine: pip3 freeze
+      component: tools
+      group:
+        kind: debug
+      label: List installed python packages
+      workingDir: '${PROJECT_SOURCE}'
+    id: list-installed-python-packages
