@@ -6,9 +6,6 @@ components:
     container:
     
       image: quay.io/devfile/universal-developer-image:ubi8-latest 
-      # image: quay.io/devfile/universal-developer-image:ubi8-0e189d9 
-      # if use -latest -> devworkspace failed to progress past phase 'Starting' for longer than timeout (5m)
-      # see https://github.com/eclipse/che/issues/21380
       
       memoryLimit: 3Gi
       # experimental, non default:
