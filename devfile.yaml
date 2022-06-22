@@ -5,13 +5,13 @@ components:
 
   - name: tools
   
-    attributes:
-      .vscode/extensions.json: |
-        {
-          "recommendations": [
-            "ms-python.python"
-          ]
-        }
+    # attributes:
+    #  .vscode/extensions.json: |
+    #    {
+    #      "recommendations": [
+    #        "ms-python.python"
+    #      ]
+    #    }
         
     container:
     
