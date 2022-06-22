@@ -4,6 +4,15 @@ metadata:
 components:
 
   - name: tools
+  
+    attributes:
+      .vscode/extensions.json: |
+        {
+          "recommendations": [
+            "ms-python/python/latest"
+          ]
+        }
+        
     container:
     
       image: quay.io/devfile/universal-developer-image:ubi8-latest 
@@ -30,9 +39,6 @@ components:
   - name: m2
     volume:
       size: 1G
-      
-  - type: chePlugin
-    id: ms-python/python/latest
       
 commands:
 
