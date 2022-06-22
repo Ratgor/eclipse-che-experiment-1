@@ -9,10 +9,11 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
+            "cwd": "${fileDirname}",
             "console": "internalConsole", // Ok
             // "console": "integratedTerminal", // Error: Timed out waiting for launcher to connect
             // "console": "externalTerminal", // Error: spawn xterm ENOENT
-            "justMyCode": true
+            "justMyCode": false
         }
     ]
 }
