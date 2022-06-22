@@ -49,4 +49,4 @@ commands:
       workingDir: ${PROJECT_SOURCE}
       commandLine: "pip3 install pipenv --force-reinstall && python3 -m pipenv install --skip-lock --system"
       group:
-        kind: run
+        kind: debug
