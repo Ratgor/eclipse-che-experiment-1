@@ -41,16 +41,7 @@ components:
       size: 1G
       
 commands:
-
-  - exec:
-      commandLine: pip3 freeze
-      component: tools
-      group:
-        kind: debug
-      label: List installed python packages
-      workingDir: '${PROJECT_SOURCE}'
-    id: list-installed-python-packages
-    
+   
   - id: install-reqs
     exec:
       label: "Install requirements"
