@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "cwd": "${fileDirname}",
+            "cwd": "${fileDirname}", // the default is project (repo) root, not a python file dir
             "console": "internalConsole", // Ok
             // "console": "integratedTerminal", // Error: Timed out waiting for launcher to connect
             // "console": "externalTerminal", // Error: spawn xterm ENOENT
