@@ -40,3 +40,13 @@ components:
     volume:
       size: 1G
 
+commands:
+   
+  - id: install-reqs
+    exec:
+      label: "Install requirements"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "pip3 install pipenv --force-reinstall && python3 -m pipenv install --skip-lock --system"
+      group:
+        kind: run
