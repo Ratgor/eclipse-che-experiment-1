@@ -2,6 +2,7 @@ schemaVersion: 2.1.0
 metadata:
   name: vscode-demo
 components:
+
   - name: tools
     container:
     
@@ -25,9 +26,13 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
+          
   - name: m2
     volume:
       size: 1G
+      
+  - type: chePlugin
+    id: ms-python/python/latest
       
 commands:
 
